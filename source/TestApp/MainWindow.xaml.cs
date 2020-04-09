@@ -19,6 +19,7 @@ using System.Diagnostics;
 using System.IO;
 using AvalonDock.Layout.Serialization;
 using AvalonDock;
+using AvalonDock.Controls;
 
 namespace TestApp
 {
@@ -237,12 +238,25 @@ namespace TestApp
 			////            LayoutDocumentPane.ShowHeader = !LayoutDocumentPane.ShowHeader;
 		}
 
-        private void OnNewFloatingWindow(object sender, RoutedEventArgs e)
+        private void OnFloatingWindowWithInitialUserControlSize(object sender, RoutedEventArgs e)
         {
-            var view = new TestUserControl();
+            var view = new Grid()
+            {
+				// Uncomment the style in the XAML-file to get the window to use these numbers 
+                MinHeight = 200,
+                MinWidth = 300,
+            };
+			
+            view.Children.Add(new TextBlock()
+            {
+				TextWrapping = TextWrapping.WrapWithOverflow,
+                Text = 
+                    $"This content can initially be sized to the content of a containing user control when dragging the {nameof(LayoutAnchorable)} into floating mode using the {nameof(LayoutAnchorableFloatingWindowControl.SetWindowSizeWhenOpened)} property. This can be seen in the commented style in the MainWindow.xaml"
+            });
+
             var anchorable = new LayoutAnchorable()
             {
-                Title = "New floating window",
+                Title = "Floating window with initial user control size",
 				Content = view
 			};
             anchorable.AddToLayout(dockManager,AnchorableShowStrategy.Most);

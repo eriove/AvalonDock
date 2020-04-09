@@ -54,7 +54,7 @@
 			<MenuItem Header="Tools">
 				<MenuItem Click="OnShowWinformsWindow" Header="WinForms Window" />
 				<MenuItem Click="OnShowToolWindow1" Header="Tool Window1" />
-				<MenuItem Click="OnNewFloatingWindow" Header="New floating window"/>
+                <MenuItem Click="OnFloatingWindowWithInitialUserControlSize" Header="Floating window with initial user control size"/>
 			</MenuItem>
 		</Menu>
 
@@ -74,6 +74,15 @@
 					</StackPanel>
 				</DataTemplate>
 			</avalonDock:DockingManager.DocumentHeaderTemplate>
+            <!--Uncomment to use MinWidth and MinHeight for floating windows-->
+			<!--<avalonDock:DockingManager.Resources>
+                <Style
+                    x:Key="{x:Type avalonDock:LayoutAnchorableFloatingWindowControl}"
+                    BasedOn="{StaticResource {x:Type avalonDock:LayoutAnchorableFloatingWindowControl}}"
+                    TargetType="{x:Type avalonDock:LayoutAnchorableFloatingWindowControl}">
+                    <Setter Property="SetWindowSizeWhenOpened" Value="True" />
+                </Style>
+            </avalonDock:DockingManager.Resources>-->
 			<avalonDock:LayoutRoot PropertyChanged="OnLayoutRootPropertyChanged">
 				<avalonDock:LayoutPanel Orientation="Horizontal">
 					<avalonDock:LayoutAnchorablePane DockWidth="50">

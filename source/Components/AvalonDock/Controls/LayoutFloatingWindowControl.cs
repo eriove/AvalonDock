@@ -69,7 +69,7 @@ namespace AvalonDock.Controls
 			Closing += OnClosing;
 			SizeChanged += OnSizeChanged;
 			_model = model;
-			// Since this control is not part of the visual tree DockingManager the resources (such as styles) are not used in this control.
+			// Since this control is not part of the visual tree of DockingManager the resources (such as styles) are not used in this control.
 			// By manually merging these resources the behaviour is what the user would expect.
             Resources.MergedDictionaries.Add(model.Root.Manager.Resources);
         }
